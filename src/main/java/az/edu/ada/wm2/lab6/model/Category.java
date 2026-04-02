@@ -24,7 +24,6 @@ public class Category {
             id = UUID.randomUUID();
         }
     }
-
     public Category() {
     }
 
