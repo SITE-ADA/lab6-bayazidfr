@@ -5,6 +5,18 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
 public class ProductResponseDto {
 
     private UUID id;
@@ -12,18 +24,6 @@ public class ProductResponseDto {
     private BigDecimal price;
     private LocalDate expirationDate;
     private List<String> categoryNames;
-
-    public ProductResponseDto() {
-    }
-
-    public ProductResponseDto(UUID id, String productName, BigDecimal price,
-                              LocalDate expirationDate, List<String> categoryNames) {
-        this.id = id;
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-        this.categoryNames = categoryNames;
-    }
 
     public UUID getId() {
         return id;

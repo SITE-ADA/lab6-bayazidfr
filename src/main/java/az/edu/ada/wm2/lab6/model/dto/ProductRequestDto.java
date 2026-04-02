@@ -5,22 +5,24 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductRequestDto {
 
     private String productName;
     private BigDecimal price;
     private LocalDate expirationDate;
     private List<UUID> categoryIds;
-
-    public ProductRequestDto() {
-    }
-
-    public ProductRequestDto(String productName, BigDecimal price, LocalDate expirationDate, List<UUID> categoryIds) {
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-        this.categoryIds = categoryIds;
-    }
 
     public String getProductName() {
         return productName;

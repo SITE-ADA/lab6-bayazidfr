@@ -14,6 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -37,8 +49,6 @@ public class Product {
     )
     private List<Category> categories = new ArrayList<>();
 
-    public Product() {
-    }
 
     public Product(String productName, BigDecimal price, LocalDate expirationDate) {
         this.id = UUID.randomUUID();
