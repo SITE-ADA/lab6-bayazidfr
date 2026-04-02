@@ -1,9 +1,6 @@
 package az.edu.ada.wm2.lab6.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +17,13 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList<>();
+
+    @PrePersist
+    public void prePersist() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
     public Category() {
     }

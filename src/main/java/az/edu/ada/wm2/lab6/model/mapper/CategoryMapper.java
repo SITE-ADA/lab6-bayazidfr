@@ -19,6 +19,7 @@ public class CategoryMapper {
         return category;
     }
 
+
     public static CategoryResponseDto toResponseDto(Category category) {
         if (category == null) {
             return null;

@@ -1,12 +1,6 @@
 package az.edu.ada.wm2.lab6.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -47,6 +41,7 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
+    @Builder.Default
     private List<Category> categories = new ArrayList<>();
 
 
@@ -55,6 +50,13 @@ public class Product {
         this.productName = productName;
         this.price = price;
         this.expirationDate = expirationDate;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
     }
 
     public Product(UUID id, String productName, BigDecimal price, LocalDate expirationDate) {
